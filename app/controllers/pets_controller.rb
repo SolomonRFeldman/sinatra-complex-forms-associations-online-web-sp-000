@@ -28,8 +28,7 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
     @pet.update(params[:pet])
     if params[:owner][:name] != ""
-      owner_id = Owner.create(params[:owner]).id
-       = owner_id
+      @pet.owner_id = Owner.create(params[:owner]).id
       @pet.save
     end
     # binding.pry
