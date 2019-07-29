@@ -12,7 +12,7 @@ class PetsController < ApplicationController
 
   post '/pets' do 
     @pet = Pet.create(params[:pet])
-    @pet.owner_id = Owner.create(params[:owner]).id unless @pet.owner = Owner.find(params[:pet][:owner_id])
+    @pet.owner = Owner.create(params[:owner]).id unless @pet.owner = Owner.find(params[:pet][:owner_id])
     binding.pry
     redirect to "pets/#{@pet.id}"
   end
