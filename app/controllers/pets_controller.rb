@@ -29,8 +29,8 @@ class PetsController < ApplicationController
     @pet.update(params[:pet])
     if params[:pet][:owner_id] == nil && owner_id = Owner.create(params[:owner]).id
       @pet.owner_id = owner_id
+      @pet.save
     end
-    @pet.save
     redirect to "pets/#{@pet.id}"
   end
   
