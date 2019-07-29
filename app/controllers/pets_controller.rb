@@ -28,11 +28,11 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
     @pet.update(params[:pet])
     if params[:owner][:name] != ""
-      @pet.owner_id = Owner.create(params[:owner][:name]).id
+      owner_id = Owner.create(params[:owner][:name]).id
+      @pet.owner_id = owner_id
       @pet.save
     end
     binding.pry
-    @pet.save
     redirect to "pets/#{@pet.id}"
   end
   
