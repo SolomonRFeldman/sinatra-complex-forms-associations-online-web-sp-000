@@ -28,6 +28,7 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
     @pet.update(params[:pet])
     if params[:owner][:name] != ""
+      binding.pry
       owner_id = Owner.create(params[:owner][:name]).id
       @pet.owner_id = owner_id
       @pet.save
